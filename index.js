@@ -20,11 +20,14 @@ var server=http.createServer(function(req,res){
 	//get the HTTP method
 	var method=req.method.toLowerCase()
 
+	//get the query string as an object
+	var queryStringObject=parsedUrl.query;
+
 	//send the response
 	res.end('Hello World');
 	
 	//log the request path
-	console.log('request recieved on path:'+trimmedPath+'with this method:'+method)
+	console.log('request recieved on path:'+trimmedPath+'with this method:'+method+'and with this query string parameters'+queryStringObject.toString)
 })
 
 
