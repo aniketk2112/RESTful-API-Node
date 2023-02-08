@@ -6,7 +6,7 @@ main file
 var http=require('http')
 var url=require('url')
 var StringDecoder=require('string_decoder').StringDecoder
-
+var config=require('./config')
 
 //create server
 var server=http.createServer(function(req,res){
@@ -60,6 +60,7 @@ var server=http.createServer(function(req,res){
 			var payloadString=JSON.stringify(payload);
 
 			//return the response
+			res.setHeader('Content-Type','application/json')
 			res.writeHead(statusCode);
 			res.end(payloadString);
 
@@ -71,8 +72,9 @@ var server=http.createServer(function(req,res){
 
 
 //asign port for a server
-server.listen(3000,function(){
-console.log('Listening on port 3000!')
+//use set NODE_ENV=production then node index.js
+server.listen(config.port,function(){
+console.log('Listening on port '+config.port+' in '+config.envName+'!')
 })
 
 //Define the handler
