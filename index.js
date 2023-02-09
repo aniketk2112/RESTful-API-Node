@@ -80,10 +80,10 @@ console.log('Listening on port '+config.port+' in '+config.envName+'!')
 //Define the handler
 var handlers={};
 
-//sample handler
-handlers.sample=function(data,callback){
+//ping handler
+handlers.ping=function(data,callback){
 	//callback a http status code, and a payload object
-	callback(406,{'name':'sample handler'});
+	callback(200);
 
 }
 
@@ -95,6 +95,6 @@ handlers.notFound=function(data,callback){
 
 //Define a request router
 var router={
-'sample':handlers.sample
+'ping':handlers.ping
 };
 
